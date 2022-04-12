@@ -37,23 +37,39 @@
     $scope.ricerca = function (ric) {
         try {
             val1 = ric.numeroFattura
-            val2 = ric.dataFattura.toDateString()
-            val3 = ric.dataRicezione.toDateString()
-        } catch {
             try {
-                val1=null
                 val2 = ric.dataFattura.toDateString()
-                val3 = ric.dataRicezione.toDateString()
-            }
-            catch {
                 try {
-                    val1 = null
-                    val2=null
                     val3 = ric.dataRicezione.toDateString()
                 } catch {
-
+                    val3=null
+                }
+            } catch {
+                val2 = null
+                try {
+                    val3 = ric.dataRicezione.toDateString()
+                } catch {
+                    val3=null
                 }
             }
+        } catch {
+            val1 = null
+            try {
+                val2 = ric.dataFattura.toDateString()
+                try {
+                    val3 = ric.dataRicezione.toDateString()
+                } catch {
+                    val3=null
+                }
+            } catch {
+                val2 = null
+                try {
+                    val3 = ric.dataRicezione.toDateString()
+                } catch {
+                    val3=null
+                }
+            }
+           
         }
         
         

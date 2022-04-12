@@ -19,5 +19,6 @@ namespace webApp.Repositorys
         public IQueryable<Fattura> getByNumFattDatFattFatRic(string numeroFattura, DateTime dataFattura, DateTime dataRicezione);
         public IQueryable<Fattura> getByNumFattDatFatt(string numeroFattura, DateTime dataFattura);
         public IQueryable<Fattura> getByDatFattDatRic(DateTime dataFattura, DateTime dataRicezione);
+        public IQueryable<Fattura> getByNumFattDatRic(string numeroFattura, DateTime dataRicezione);
     }
 }

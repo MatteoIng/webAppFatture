@@ -72,7 +72,7 @@ namespace webApp.Controllers
             IQueryable<Fattura> result=null;
 
             
-            /*
+            
             if (numeroFattura != null)
             {
                 if (dataFattura != null)
@@ -82,17 +82,28 @@ namespace webApp.Controllers
                         dataFatt = Convert.ToDateTime(dataFattura);
                         dataRic = Convert.ToDateTime(dataRicezione);
                         //query con tutti e tre
-                        result=this.fatturaRepository.getByNumFattDatFattFatRic(numeroFattura,dataFatt,da)
+                        result = this.fatturaRepository.getByNumFattDatFattFatRic(numeroFattura, dataFatt, dataRic);
                     }
                     else
                     {
                         dataFatt = Convert.ToDateTime(dataFattura);
                         //query con primi 2
+                        result = this.fatturaRepository.getByNumFattDatFatt(numeroFattura, dataFatt);
                     }
                 }
                 else
                 {
-                    result = this.fatturaRepository.getByNumeroFattura(numeroFattura);
+                    if(dataRicezione != null)
+                    {
+                        dataRic = Convert.ToDateTime(dataRicezione);
+                        //query con 1 e 3
+                        result = this.fatturaRepository.getByNumFattDatRic(numeroFattura, dataRic);
+                    }
+                    else
+                    {
+                        //query solo il 1
+                        result = this.fatturaRepository.getByNumeroFattura(numeroFattura);
+                    }
                 }
             }
             else
@@ -104,6 +115,13 @@ namespace webApp.Controllers
                         dataFatt = Convert.ToDateTime(dataFattura);
                         dataRic = Convert.ToDateTime(dataRicezione);
                         //query con questi 2
+                        result = this.fatturaRepository.getByDatFattDatRic(dataFatt, dataRic);
+                    }
+                    else
+                    {
+                        dataFatt = Convert.ToDateTime(dataFattura);
+                        //query solo col 2
+                        result = this.fatturaRepository.getByDataFattura(dataFatt);
                     }
                 }
                 else
@@ -112,16 +130,17 @@ namespace webApp.Controllers
                     {
 
                         dataRic = Convert.ToDateTime(dataRicezione);
+                        //query solo col 3
                         result = this.fatturaRepository.getByDataRicezione(dataRic);
                     }
                     else
                     {
+                        //nessuno può allora tornano tutti non sta cercando veramente
                        result = this.fatturaRepository.getAll();
                     }
                 }
             }
 
-            */
             return Json(result);
         }
     }
