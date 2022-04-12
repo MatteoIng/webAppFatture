@@ -1,0 +1,144 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div ng-app="fatturaApp" ng-controller="fatturaCtrl">
+
+    <div class="row g-2">
+        <div class="col-md">
+            <div class="form-floating">
+                <label for="NF">Numero fattura</label>
+                <input type="text" class="form-control" id="NF" ng-model="ric.numeroFattura" />
+            </div>
+        </div>
+        <div class="col-md">
+            <div class="form-floating">
+                <label for="DF">Data fattura</label>
+                <input type="date" class="form-control" id="DF" ng-model="ric.dataFattura" />
+            </div>
+        </div>
+        <div class="col-md">
+            <div class="form-floating">
+                <label for="DR">Data ricezione fattura</label>
+                <input type="date" class="form-control" id="DR" ng-model="ric.dataRicezione" />
+            </div>
+        </div>
+        <div class="col-md">
+            
+                <button class="btn btn-primary" type="button" ng-click="ricerca(ric)">
+                    Cerca
+                </button>
+            
+        </div>
+    </div>
+    <br />
+    <div>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th scope="col">
+                        Id
+                    </th>
+                    <th scope="col">
+                        Numero fattura
+                    </th>
+                    <th scope="col">
+                        Data fattura
+                    </th>
+                    <th scope="col">
+                        Data ricezione
+                    </th>
+                    <th scope="col">
+                        Intestatario
+                    </th>
+                    <th scope="col">
+                        importo
+                    </th>
+                    <th scope="col">
+                        Metodo pagamento
+                    </th>
+                    <th scope="col">
+                        Pagatore
+                    </th>
+                    <th scope="col">
+                        Data pagamento
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="fattura in fatture">
+                    <th scope="row">#{{fattura.id}}</th>
+                    <td>{{fattura.numeroFattura}}</td>
+                    <td>{{fattura.dataFattura}}</td>
+                    <td>{{fattura.dataRicezione}}</td>
+                    <td>{{fattura.intestatario}}</td>
+                    <td>{{fattura.importo}}</td>
+                    <td>{{fattura.metodoPagamento}}</td>
+                    <td>{{fattura.pagatore}}</td>
+                    <td>{{fattura.dataPagamento}}</td>
+                    <td>
+                        <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#updateModal" ng-click="getFatturaById(fattura.id)">
+                            Modifica
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+
+
+    <!-- Modal -->
+
+    <div class="modal fade" id="updateModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <form name="updateFattura" class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Fattura #{{fattura.id}}</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close" ng-click="reverse()">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+
+                    <div>
+                        <label>Numero fattura: </label>
+                        {{fattura.numeroFattura}}
+                    </div>
+                    <div>
+                        <label>Data fattura: </label>
+                        {{fattura.dataFattura}}
+                    </div>
+                    <div>
+                        <label>Data ricezione fattura: </label>
+                        {{fattura.dataRicezione}}
+                    </div>
+                    <div>
+                        <label>Intestatario: </label>
+                        {{fattura.intestatario}}
+                    </div>
+                    <div>
+                        <label>Importo: </label>
+                        {{fattura.importo}}
+                    </div>
+                    <div>
+                        <label>Metodo pagamento: </label>
+                        <input type="text" ng-model="fattura.metodoPagamento" />
+                    </div>
+                    <div>
+                        <label>Pagatore: </label>
+                        <input type="text" ng-model="fattura.pagatore" />
+                    </div>
+                    <div>
+                        <label>Data pagamento: </label>
+                        <input type="date" ng-model="fattura.dataPagamento" />
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-primary" data-dismiss="modal" ng-click="updateFattur(fattura)">Salva</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+</div>
