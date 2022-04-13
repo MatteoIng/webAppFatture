@@ -36,13 +36,18 @@
 
     $scope.ricerca = function (ric) {
         try {
-            val1 = ric.numeroFattura
+            if (ric.numeroFattura == "" || ric.numeroFattura == undefined) {
+                val1 = null
+            } else {
+                val1 = ric.numeroFattura
+            }
+            
             try {
                 val2 = ric.dataFattura.toDateString()
                 try {
                     val3 = ric.dataRicezione.toDateString()
                 } catch {
-                    val3=null
+                    val3 = null
                 }
             } catch {
                 val2 = null

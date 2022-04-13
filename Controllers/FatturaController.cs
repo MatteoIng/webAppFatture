@@ -24,6 +24,19 @@ namespace webApp.Controllers
         [HttpPost("saveFattura")]
         public IActionResult saveFattura([FromBody]Fattura fattura)
         {
+            if(fattura.dataFattura != null)
+            {
+                fattura.dataFattura=Convert.ToDateTime(fattura.dataFattura);
+            }
+            if(fattura.dataPagamento != null)
+            {
+                fattura.dataPagamento = Convert.ToDateTime(fattura.dataPagamento);
+            }
+            if(fattura.dataRicezione != null)
+            {
+                fattura.dataRicezione = Convert.ToDateTime(fattura.dataRicezione);
+            }
+
             this.fatturaRepository.save(fattura);
             return Json(this.fatturaRepository.getAll());
         }
@@ -73,11 +86,11 @@ namespace webApp.Controllers
 
             
             
-            if (numeroFattura != null)
+            if (!numeroFattura.Equals("null"))
             {
-                if (dataFattura != null)
+                if (!dataFattura.Equals("null"))
                 {
-                    if (dataRicezione != null)
+                    if (!dataRicezione.Equals("null"))
                     {
                         dataFatt = Convert.ToDateTime(dataFattura);
                         dataRic = Convert.ToDateTime(dataRicezione);
@@ -93,7 +106,7 @@ namespace webApp.Controllers
                 }
                 else
                 {
-                    if(dataRicezione != null)
+                    if(!dataRicezione.Equals("null"))
                     {
                         dataRic = Convert.ToDateTime(dataRicezione);
                         //query con 1 e 3
@@ -108,9 +121,9 @@ namespace webApp.Controllers
             }
             else
             {
-                if (dataFattura != null)
+                if (!dataFattura.Equals("null"))
                 {
-                    if (dataRicezione != null)
+                    if (!dataRicezione.Equals("null"))
                     {
                         dataFatt = Convert.ToDateTime(dataFattura);
                         dataRic = Convert.ToDateTime(dataRicezione);
@@ -126,7 +139,7 @@ namespace webApp.Controllers
                 }
                 else
                 {
-                    if (dataRicezione != null)
+                    if (!dataRicezione.Equals("null"))
                     {
 
                         dataRic = Convert.ToDateTime(dataRicezione);
