@@ -24,19 +24,6 @@ namespace webApp.Controllers
         [HttpPost("saveFattura")]
         public IActionResult saveFattura([FromBody]Fattura fattura)
         {
-            if(fattura.dataFattura != null)
-            {
-                fattura.dataFattura=Convert.ToDateTime(fattura.dataFattura);
-            }
-            if(fattura.dataPagamento != null)
-            {
-                fattura.dataPagamento = Convert.ToDateTime(fattura.dataPagamento);
-            }
-            if(fattura.dataRicezione != null)
-            {
-                fattura.dataRicezione = Convert.ToDateTime(fattura.dataRicezione);
-            }
-
             this.fatturaRepository.save(fattura);
             return Json(this.fatturaRepository.getAll());
         }
@@ -84,8 +71,7 @@ namespace webApp.Controllers
             DateTime dataRic;
             IQueryable<Fattura> result=null;
 
-            
-            
+
             if (!numeroFattura.Equals("null"))
             {
                 if (!dataFattura.Equals("null"))
@@ -141,7 +127,6 @@ namespace webApp.Controllers
                 {
                     if (!dataRicezione.Equals("null"))
                     {
-
                         dataRic = Convert.ToDateTime(dataRicezione);
                         //query solo col 3
                         result = this.fatturaRepository.getByDataRicezione(dataRic);

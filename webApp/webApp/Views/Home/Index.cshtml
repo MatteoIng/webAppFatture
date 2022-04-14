@@ -69,13 +69,13 @@
                 <tr ng-repeat="fattura in fatture">
                     <th scope="row">#{{fattura.id}}</th>
                     <td>{{fattura.numeroFattura}}</td>
-                    <td>{{fattura.dataFattura}}</td>
-                    <td>{{fattura.dataRicezione}}</td>
+                    <td>{{fattura.dataFattura | date:"dd/MM/yyyy" : "+400"}}</td>
+                    <td>{{fattura.dataRicezione | date:"dd/MM/yyyy" : "+400"}}</td>
                     <td>{{fattura.intestatario}}</td>
                     <td>{{fattura.importo}}</td>
                     <td>{{fattura.metodoPagamento}}</td>
                     <td>{{fattura.pagatore}}</td>
-                    <td>{{fattura.dataPagamento}}</td>
+                    <td>{{fattura.dataPagamento | date: "dd/MM/yyyy" : "+400"}}</td>
                     <td>
                         <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#updateModal" ng-click="getFatturaById(fattura.id)">
                             Modifica
@@ -107,11 +107,11 @@
                     </div>
                     <div>
                         <label>Data fattura: </label>
-                        {{fattura.dataFattura}}
+                        {{fattura.dataFattura | date:"dd/MM/yyyy"}}
                     </div>
                     <div>
                         <label>Data ricezione fattura: </label>
-                        {{fattura.dataRicezione}}
+                        {{fattura.dataRicezione | date:"dd/MM/yyyy"}}
                     </div>
                     <div>
                         <label>Intestatario: </label>
@@ -130,7 +130,7 @@
                         <input type="text" ng-model="fattura.pagatore" />
                     </div>
                     <div>
-                        <label>Data pagamento: </label>
+                        <label>Data pagamento:</label>
                         <input type="date" ng-model="fattura.dataPagamento" />
                     </div>
                 </div>

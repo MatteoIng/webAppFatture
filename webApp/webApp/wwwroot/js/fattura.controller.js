@@ -90,4 +90,12 @@
                 $scope.data=reason.data
         })
     }
+
+
+
+
+    $scope.reverse = function () {
+        $scope.fattura = null
+
+    }
 })
