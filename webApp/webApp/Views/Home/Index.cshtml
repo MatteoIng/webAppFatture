@@ -4,6 +4,9 @@
 
 <div ng-app="fatturaApp" ng-controller="fatturaCtrl">
 
+
+
+    <!--Campi di ricerca e bottone-->
     <div class="row g-2">
         <div class="col-md">
             <div class="form-floating">
@@ -32,6 +35,11 @@
         </div>
     </div>
     <br />
+
+
+
+
+    <!--Table-->
     <div>
         <table class="table table-striped">
             <thead>
@@ -88,8 +96,9 @@
 
 
 
-    <!-- Modal -->
 
+
+    <!-- Modal -->
     <div class="modal fade" id="updateModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <form name="updateFattura" class="modal-content">
@@ -99,39 +108,90 @@
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-                <div class="modal-body">
+                <div class="modal-body" style="text-align:center">
 
-                    <div>
-                        <label>Numero fattura: </label>
-                        {{fattura.numeroFattura}}
+
+                    <div class="divSingoli">
+                        <div>
+                            <label class="labelModal">Numero fattura: </label>
+                        </div>
+                        <div>
+                            <label id="labelDato" >{{fattura.numeroFattura}}</label>
+                        </div>
                     </div>
-                    <div>
-                        <label>Data fattura: </label>
-                        {{fattura.dataFattura | date:"dd/MM/yyyy"}}
+
+
+                    <div style="display:inline-block">
+                        <div>
+                            <label class="labelModal">Data fattura: </label>
+                        </div>
+                        <div>
+                            <label id="labelDato">{{fattura.dataFattura | date:"dd/MM/yyyy"}}</label>
+                        </div>
                     </div>
-                    <div>
-                        <label>Data ricezione fattura: </label>
-                        {{fattura.dataRicezione | date:"dd/MM/yyyy"}}
+
+
+                    <div class="divSingoli">
+                        <div>
+                            <label class="labelModal">Data ricezione fattura: </label>
+                        </div>
+                        <div>
+                            <label id="labelDato">{{fattura.dataRicezione | date:"dd/MM/yyyy"}}</label>
+                        </div>
                     </div>
-                    <div>
-                        <label>Intestatario: </label>
-                        {{fattura.intestatario}}
+
+
+                    <div class="divSingoli">
+                        <div>
+                            <label class="labelModal">Intestatario: </label>
+                        </div>
+                        <div>
+                            <label id="labelDato">{{fattura.intestatario}}</label>
+                        </div>
                     </div>
-                    <div>
-                        <label>Importo: </label>
-                        {{fattura.importo}}
+
+
+
+                    <div class="divSingoli">
+                        <div>
+                            <label class="labelModal">Importo: </label>
+                        </div>
+                        <div>
+                            <label id="labelDato">{{fattura.importo}}</label>
+                        </div>
                     </div>
-                    <div>
-                        <label>Metodo pagamento: </label>
-                        <input type="text" ng-model="fattura.metodoPagamento" />
+
+
+
+                    <div class="divSingoli">
+                        <div>
+                            <label class="labelModal">Metodo pagamento: </label>
+                        </div>
+                        <div>
+                            <input id="labelDato" type="text" ng-model="fattura.metodoPagamento" />
+                        </div>
                     </div>
-                    <div>
-                        <label>Pagatore: </label>
-                        <input type="text" ng-model="fattura.pagatore" />
+
+
+
+                    <div class="divSingoli">
+                        <div>
+                            <label class="labelModal">Pagatore: </label>
+                        </div>
+                        <div>
+                            <input id="labelDato" type="text" ng-model="fattura.pagatore" />
+                        </div>
                     </div>
-                    <div>
-                        <label>Data pagamento:</label>
-                        <input type="date" ng-model="fattura.dataPagamento" />
+
+
+
+                    <div class="divSingoli">
+                        <div>
+                            <label class="labelModal">Data pagamento:</label>
+                        </div>
+                        <div>
+                            <input type="date" ng-model="fattura.dataPagamento" />
+                        </div>
                     </div>
                 </div>
                 <div class="modal-footer">

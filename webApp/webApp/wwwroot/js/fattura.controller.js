@@ -9,6 +9,9 @@
             $scope.data=reason.data
         })
 
+
+
+
     $scope.getFatturaById = function (id) {
         $http.get("https://localhost:44342/Fattura/getFattura/" + id)
             .then(function (response) {
@@ -78,8 +81,6 @@
         }
         
         
-        
-
         url = "https://localhost:44342/Fattura/findFatture/" + val1 + "/" + val2 + "/" + val3
         $http.get(url)
             .then(function (response) {
