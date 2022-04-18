@@ -39,45 +39,73 @@
 
     $scope.ricerca = function (ric) {
         try {
-            if (ric.numeroFattura == "" || ric.numeroFattura == undefined) {
-                val1 = null
+           
+            if (ric.numeroFattura != undefined) {
+                if (ric.dataFattura != undefined) {
+                    if (ric.dataRicezione != undefined) {
+
+                        val1 = ric.numeroFattura
+                        val2 = ric.dataFattura
+                        val3 = ric.dataRicezione
+
+                    } else {
+
+                        val1 = ric.numeroFattura
+                        val2 = ric.dataFattura
+                        val3 = null
+
+                    }
+                } else {
+                    if (ric.dataRicezione != undefined) {
+
+                        val1 = ric.numeroFattura
+                        val2 = null
+                        val3 = ric.dataRicezione
+
+                    } else {
+
+                        val1 = ric.numeroFattura
+                        val2 = null
+                        val3 = null
+
+                    }
+                }
             } else {
-                val1 = ric.numeroFattura
-            }
-            
-            try {
-                val2 = ric.dataFattura.toDateString()
-                try {
-                    val3 = ric.dataRicezione.toDateString()
-                } catch {
-                    val3 = null
+                if (ric.dataFattura != undefined) {
+                    if (ric.dataRicezione != undefined) {
+
+                        val1 = null
+                        val2 = ric.dataFattura
+                        val3 = ric.dataRicezione
+
+                    } else {
+
+                        val1 = null
+                        val2 = ric.dataFattura
+                        val3 = null
+
+                    }
+                } else {
+                    if (ric.dataRicezione != undefined) {
+
+                        val1 = null
+                        val2 = null
+                        val3 = ric.dataRicezione
+
+                    } else {
+
+                        val1 = null
+                        val2 = null
+                        val3 = null
+
+                    }
                 }
-            } catch {
-                val2 = null
-                try {
-                    val3 = ric.dataRicezione.toDateString()
-                } catch {
-                    val3=null
-                }
             }
+
         } catch {
             val1 = null
-            try {
-                val2 = ric.dataFattura.toDateString()
-                try {
-                    val3 = ric.dataRicezione.toDateString()
-                } catch {
-                    val3=null
-                }
-            } catch {
-                val2 = null
-                try {
-                    val3 = ric.dataRicezione.toDateString()
-                } catch {
-                    val3=null
-                }
-            }
-           
+            val2 = null
+            val3 = null
         }
         
         

@@ -5,7 +5,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using webApp.Models;
 
-namespace CarEBike.Models
+namespace webApp.Models
 {
     public class StoreDbContext : DbContext
     {
